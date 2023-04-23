@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gerador de IP Falso</title>
+    <script>
+      function generateFakeIPAddress() {
+        const zipCode = document.getElementById("zipCode").value;
+        const octet1 = Math.floor(zipCode / 255 / 255 / 255 % 256);
+        const octet2 = Math.floor(zipCode / 255 / 255 % 256);
+        const octet3 = Math.floor(zipCode / 255 % 256);
+        const octet4 = zipCode % 256;
+        const ip = `10.${octet1}.${octet2}.${octet3}.${octet4}`;
+        document.getElementById("fakeIP").textContent = ip;
+        }
+    </script>
+  </head>
+  <body>
+    <label for="zipCode">Insira um número:</label>
+    <input type="number" id="zipCode"><br><br>
+    <button type="button" onclick="generateFakeIPAddress()">Gerar IP Falso</button><br><br>
+    <div id="fakeIP"></div>
+  </body>
+</html>
